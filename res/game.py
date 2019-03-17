@@ -62,33 +62,33 @@ for e in entity:
 pygame.init()
 clock = pygame.time.Clock()
 
-win = pygame.display.set_mode((1000, 1000))
+win = pygame.display.set_mode((1000, 500))
 pygame.display.set_caption("MWGC")
 
 goat = pygame.transform.scale(pygame.image.load('goat.png'), (70, 70))
 wolf = pygame.transform.scale(pygame.image.load('wolf.png'), (100, 100))
 carrot = pygame.transform.scale(pygame.image.load('carrot.png'), (120, 120))
 boat = pygame.transform.scale(pygame.image.load('boat.png'), (200, 200))
-bg = pygame.image.load('BgDaa.jpg')
+bg = pygame.transform.scale(pygame.image.load('BgDaa.jpg'), (1000, 500))
 man = pygame.transform.scale(pygame.image.load('standing.png'), (100, 100))
 gameover = pygame.image.load('gameover.png')
 close = pygame.image.load('close.png')
 replay = pygame.image.load('replay.png')
 
-gx = 100
-gy = 800
+gx = 50
+gy = 400
 
-wx = 20
-wy = 790
+wx = 10
+wy = 395
 
-cx = 135
-cy = 780
+cx = 66
+cy = 390
 
 bx = 300
 by = 850
 
-mx = 190
-my = 790
+mx = 90
+my = 395
 
 circleX = 50
 circleY = 100

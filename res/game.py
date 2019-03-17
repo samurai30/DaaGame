@@ -75,7 +75,7 @@ gameover = pygame.image.load('gameover.png')
 gamewon = pygame.image.load('gamewon.png')
 close = pygame.transform.scale(pygame.image.load('close.png'), (50, 50))
 replay = pygame.transform.scale(pygame.image.load('replay.png'), (50, 50))
-
+moveImage = pygame.transform.scale(pygame.image.load('move.png'), (100, 100))
 gx = 25
 gy = 320
 
@@ -91,7 +91,7 @@ by = 350
 mx = 200
 my = 320
 
-circleX = 50
+circleX = 450
 circleY = 100
 
 
@@ -163,7 +163,7 @@ def renderGame():
     win.blit(wolf, (wx, wy))
     win.blit(carrot, (cx, cy))
     win.blit(man, (mx, my))
-    pygame.draw.circle(win, (255, 255, 0), (circleX, circleY), 50)
+    win.blit(moveImage, (circleX, circleY))
 
     global nextID
     global Move

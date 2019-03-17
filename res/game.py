@@ -554,7 +554,6 @@ while run:
                         print("moving")
                         Move = True
 
-
         renderGame()
 
     elif STATE == 'GAMEOVER':

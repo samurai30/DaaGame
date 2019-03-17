@@ -72,26 +72,53 @@ boat = pygame.transform.scale(pygame.image.load('boat.png'), (200, 200))
 bg = pygame.transform.scale(pygame.image.load('BgDaa.jpg'), (1000, 500))
 man = pygame.transform.scale(pygame.image.load('standing.png'), (100, 100))
 gameover = pygame.image.load('gameover.png')
-close = pygame.image.load('close.png')
-replay = pygame.image.load('replay.png')
+close = pygame.transform.scale(pygame.image.load('close.png'), (50, 50))
+replay = pygame.transform.scale(pygame.image.load('replay.png'), (50, 50))
 
-gx = 50
-gy = 400
+gx = 25
+gy = 320
 
-wx = 10
-wy = 395
+wx = 80
+wy = 300
 
 cx = 66
 cy = 390
 
 bx = 300
-by = 850
+by = 350
 
-mx = 90
-my = 395
+mx = 200
+my = 320
 
 circleX = 50
 circleY = 100
+
+
+def defaultCord():
+    global gx
+    global gy
+    global wx
+    global wy
+    global cx
+    global cy
+    global bx
+    global by
+    global mx
+    global my
+    global gx
+    global gy
+    global wx
+    global wy
+    gx = 25
+    gy = 320
+    wx = 80
+    wy = 300
+    cx = 66
+    cy = 390
+    bx = 300
+    by = 350
+    mx = 200
+    my = 320
 
 # variables
 
@@ -115,7 +142,11 @@ STATE = 'MAIN'
 def renderGame():
     global STATE
     global whos
+    global bx
+    global gx
+    global gy
     win.blit(bg, (0, 0))
+    win.blit(boat, (bx, by))
     win.blit(goat, (gx, gy))
     win.blit(wolf, (wx, wy))
     win.blit(carrot, (cx, cy))
@@ -131,7 +162,19 @@ def renderGame():
                 for who in whos:
                     move(who, nextID)
                     print("moving :", who, "\n")
-
+                    if bx < 500:
+                        for i in range(0, 50):
+                            bx += 5
+                            gx += 5
+                            pygame.display.update()
+                        for b in range(0, 10):
+                            gx += 32
+                            gy -= 6
+                            pygame.display.update()
+                    elif bx > 500:
+                        for i in range(0, 50):
+                            bx += -5
+                            pygame.display.update()
                 Move = False
                 whos.clear()
         else:
@@ -141,19 +184,15 @@ def renderGame():
 
     else:
         print("passed")
-    if Flip:
-        win.blit(pygame.transform.flip(boat, True, False), (bx, by))
-    else:
-        win.blit(boat, (bx, by))
 
     pygame.display.update()
 
 
-closeX = 250
-closeY = 550
+closeX = 300
+closeY = 225
 
-replayX = 750
-replayY = 550
+replayX = 650
+replayY = 225
 
 restart = False
 
@@ -162,12 +201,13 @@ def gameOver():
     global STATE
     global restart
     win.blit(bg, (0, 0))
-    win.blit(gameover, (200, 400))
+    win.blit(gameover, (200, 100))
     win.blit(close, (closeX, closeY))
     win.blit(replay, (replayX, replayY))
     pygame.display.update()
 
     if restart:
+        defaultCord()
         STATE = 'MAIN'
         restart = False
 
@@ -175,7 +215,7 @@ def gameOver():
 run = True
 
 while run:
-    clock.tick(15)
+    clock.tick(30)
 
     if STATE == 'MAIN':
 
@@ -189,41 +229,67 @@ while run:
                     if gx + 70 > mouse[0] > gx and gy + 70 > mouse[1] > gy:
                         if len(whos) < int(whosize):
                             if not ('goat' in whos):
-                                if gx < bx:
-                                    countX = bx - gx
-                                    countY = by - gy
-                                    print(countX)
-                                    for i in range(countX):
-                                        if gx <= bx:
-                                            gx += 2
-                                            for y in range(countY):
-                                                if gy < by:
-                                                    gy += 2
-
                                 print("goat")
                                 whos.append('goat')
+                                print(whos)
+                                if gx < 300:
+                                    for i in range(0, 10):
+                                        gx += 30
+                                        gy += 6
+                                        pygame.display.update()
+                                elif gx > 600:
+                                    for i in range(0, 10):
+                                        gx -= 30
+                                        gy -= 6
+                                        pygame.display.update()
+                            elif 'goat' in whos:
+                                whos.remove('goat')
+                                print(whos)
+                        elif 'goat' in whos:
+                            whos.remove('goat')
+                            print(whos)
 
                     elif wx + 100 > mouse[0] > wx and wy + 100 > mouse[1] > wy:
                         if len(whos) < int(whosize):
                             if not ('wolf' in whos):
                                 print("wolf")
                                 whos.append('wolf')
+                                print(whos)
+                            elif 'wolf' in whos:
+                                whos.remove('wolf')
+                                print(whos)
+                        elif 'wolf' in whos:
+                            whos.remove('wolf')
+                            print(whos)
 
                     elif mx + 100 > mouse[0] > mx and wy + 100 > mouse[1] > my:
                         if len(whos) < int(whosize):
                             if not ('man' in whos):
                                 print("man")
                                 whos.append('man')
-
+                            elif 'man' in whos:
+                                whos.remove('man')
+                                print(whos)
+                        elif 'man' in whos:
+                            whos.remove('man')
+                            print(whos)
                     elif cx + 120 > mouse[0] > cx and cy + 120 > mouse[1] > cy:
                         if len(whos) < int(whosize):
                             if not ('cabbage' in whos):
                                 print("cabbage")
                                 whos.append('cabbage')
+                            elif 'cabbage' in whos:
+                                whos.remove('cabbage')
+                                print(whos)
+                        elif 'cabbage' in whos:
+                            whos.remove('cabbage')
+                            print(whos)
 
                     elif circleX + 100 > mouse[0] > circleX and circleY + 100 > mouse[1] > circleY:
                         print("moving")
                         Move = True
+
+
         renderGame()
 
     elif STATE == 'GAMEOVER':

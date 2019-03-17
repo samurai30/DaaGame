@@ -340,170 +340,214 @@ while run:
                     if gx + 70 > mouse[0] > gx and gy + 70 > mouse[1] > gy:
                         if len(whos) < int(whosize):
                             if not ('goat' in whos):
-                                print("goat")
-                                whos.append('goat')
-                                print(whos)
-                                if gx < 300:
-                                    for i in range(0, 10):
-                                        gx += 30
-                                        gy += 6
-                                        pygame.display.update()
-                                elif gx > 600:
-                                    for i in range(0, 10):
-                                        gx -= 30
-                                        gy += 6
-                                        pygame.display.update()
+                                if bx < 500:
+                                    if gx < 300:
+                                        for i in range(0, 10):
+                                            gx += 30
+                                            gy += 6
+                                            pygame.display.update()
+                                        whos.append('goat')
+                                if bx > 500:
+                                    if gx > 600:
+                                        for i in range(0, 10):
+                                            gx -= 30
+                                            gy += 6
+                                            pygame.display.update()
+                                    whos.append('goat')
                             elif 'goat' in whos:
-                                whos.remove('goat')
+
                                 print(whos)
+                                if bx < 500:
+                                    if 400 > gx > 300:
+                                        for i in range(0, 10):
+                                            gx -= 30
+                                            gy -= 6
+                                            pygame.display.update()
+                                        whos.remove('goat')
+                                if bx > 500:
+                                    if 540 < gx < 600:
+                                        for i in range(0, 10):
+                                            gx += 30
+                                            gy -= 6
+                                            pygame.display.update()
+                                        whos.remove('goat')
+                        elif 'goat' in whos:
+                            whos.remove('goat')
+                            if bx < 500:
                                 if 400 > gx > 300:
                                     for i in range(0, 10):
                                         gx -= 30
                                         gy -= 6
                                         pygame.display.update()
-                                elif 540 < gx < 600:
+                                    whos.remove('goat')
+                            if bx > 500:
+                                if 540 < gx < 600:
                                     for i in range(0, 10):
                                         gx += 30
                                         gy -= 6
                                         pygame.display.update()
-                        elif 'goat' in whos:
-                            whos.remove('goat')
-                            if 400 > gx > 300:
-                                for i in range(0, 10):
-                                    gx -= 30
-                                    gy -= 6
-                                    pygame.display.update()
-                            elif 540 < gx < 600:
-                                for i in range(0, 10):
-                                    gx += 30
-                                    gy -= 6
-                                    pygame.display.update()
+                                    whos.remove('goat')
                             print(whos)
 
                     elif wx + 100 > mouse[0] > wx and wy + 100 > mouse[1] > wy:
                         if len(whos) < int(whosize):
                             if not ('wolf' in whos):
                                 print("wolf")
-                                whos.append('wolf')
-                                if wx < 300:
-                                    for i in range(0, 10):
-                                        wx += 29
-                                        wy += 5
-                                        pygame.display.update()
-                                elif wx > 600:
-                                    for i in range(0, 10):
-                                        wx -= 20
-                                        wy += 5
-                                        pygame.display.update()
+
+                                if bx < 500:
+                                    if wx < 300:
+                                        for i in range(0, 10):
+                                            wx += 29
+                                            wy += 5
+                                            pygame.display.update()
+                                        whos.append('wolf')
+                                if bx > 500:
+                                    if wx > 600:
+                                        for i in range(0, 10):
+                                            wx -= 20
+                                            wy += 5
+                                            pygame.display.update()
+                                        whos.append('wolf')
                                 print(whos)
                             elif 'wolf' in whos:
-                                whos.remove('wolf')
+
+                                if bx < 500:
+                                    if 400 > wx > 300:
+                                        for i in range(0, 10):
+                                            wx -= 29
+                                            wy -= 5
+                                            pygame.display.update()
+                                        whos.remove('wolf')
+
+                                if bx > 500:
+                                    if 500 < wx < 680:
+                                        for i in range(0, 10):
+                                            wx += 20
+                                            wy -= 5
+                                            pygame.display.update()
+                                        whos.remove('wolf')
+                                print(whos)
+                        elif 'wolf' in whos:
+                            if bx < 500:
                                 if 400 > wx > 300:
                                     for i in range(0, 10):
                                         wx -= 29
                                         wy -= 5
                                         pygame.display.update()
-                                elif 500 < wx < 680:
+                                    whos.remove('wolf')
+
+                            if bx > 500:
+                                if 500 < wx < 680:
                                     for i in range(0, 10):
                                         wx += 20
                                         wy -= 5
                                         pygame.display.update()
-                                print(whos)
-                        elif 'wolf' in whos:
-                            whos.remove('wolf')
-                            if 400 > wx > 300:
-                                for i in range(0, 10):
-                                    wx -= 29
-                                    wy -= 5
-                                    pygame.display.update()
-                            elif 500 < wx < 680:
-                                for i in range(0, 10):
-                                    wx += 20
-                                    wy -= 5
-                                    pygame.display.update()
+                                    whos.remove('wolf')
                             print(whos)
 
                     elif mx + 100 > mouse[0] > mx and wy + 100 > mouse[1] > my:
                         if len(whos) < int(whosize):
                             if not ('man' in whos):
                                 print("man")
-                                whos.append('man')
-                                if mx < 300:
-                                    for i in range(0, 10):
-                                        mx += 20
-                                        my += 3
-                                        pygame.display.update()
-                                elif mx > 600:
-                                    for i in range(0, 10):
-                                        mx -= 20
-                                        my += 3
-                                        pygame.display.update()
+
+                                if bx < 500:
+                                    if mx < 300:
+                                        for i in range(0, 10):
+                                            mx += 20
+                                            my += 3
+                                            pygame.display.update()
+                                        whos.append('man')
+                                if bx > 500:
+                                    if mx > 600:
+                                        for i in range(0, 10):
+                                            mx -= 20
+                                            my += 3
+                                            pygame.display.update()
+                                        whos.append('man')
                             elif 'man' in whos:
-                                whos.remove('man')
+
+                                if bx < 500:
+                                    if 500 > mx > 300:
+                                        for i in range(0, 10):
+                                            mx -= 20
+                                            my -= 3
+                                            pygame.display.update()
+                                        whos.remove('man')
+                                if bx > 500:
+                                    if 540 < mx < 600:
+                                        for i in range(0, 10):
+                                            mx += 20
+                                            my -= 3
+                                            pygame.display.update()
+                                        whos.remove('man')
+                                print(whos)
+                        elif 'man' in whos:
+                            if bx < 500:
                                 if 500 > mx > 300:
                                     for i in range(0, 10):
                                         mx -= 20
                                         my -= 3
                                         pygame.display.update()
-                                elif 540 < mx < 600:
+                                    whos.remove('man')
+                            if bx > 500:
+                                if 540 < mx < 600:
                                     for i in range(0, 10):
                                         mx += 20
                                         my -= 3
                                         pygame.display.update()
-                                print(whos)
-                        elif 'man' in whos:
-                            whos.remove('man')
-                            if 500 > mx > 300:
-                                for i in range(0, 10):
-                                    mx -= 20
-                                    my -= 3
-                                    pygame.display.update()
-                            elif 540 < mx < 600:
-                                for i in range(0, 10):
-                                    mx += 20
-                                    my -= 3
-                                    pygame.display.update()
+                                    whos.remove('man')
                             print(whos)
                     elif cx + 120 > mouse[0] > cx and cy + 120 > mouse[1] > cy:
                         if len(whos) < int(whosize):
                             if not ('cabbage' in whos):
                                 print("cabbage")
-                                whos.append('cabbage')
-                                if cx < 300:
-                                    for i in range(0, 10):
-                                        cx += 20
-                                        cy += 3
-                                        pygame.display.update()
-                                elif cx > 600:
-                                    for i in range(0, 10):
-                                        cx -= 20
-                                        cy += 3
-                                        pygame.display.update()
+
+                                if bx < 500:
+                                    if cx < 300:
+                                        for i in range(0, 10):
+                                            cx += 20
+                                            cy += 3
+                                            pygame.display.update()
+                                        whos.append('cabbage')
+                                if bx > 500:
+                                    if cx > 600:
+                                        for i in range(0, 10):
+                                            cx -= 20
+                                            cy += 3
+                                            pygame.display.update()
+                                        whos.append('cabbage')
                             elif 'cabbage' in whos:
-                                whos.remove('cabbage')
+
+                                if bx < 500:
+                                    if 500 > cx > 300:
+                                        for i in range(0, 10):
+                                            cx -= 20
+                                            cy -= 3
+                                            pygame.display.update()
+                                        whos.remove('cabbage')
+                                if bx > 500:
+                                    if 500 < cx < 650:
+                                        for i in range(0, 10):
+                                            cx += 20
+                                            cy -= 3
+                                            pygame.display.update()
+                                        whos.remove('cabbage')
+                                print(whos)
+                        elif 'cabbage' in whos:
+                            if bx < 500:
                                 if 500 > cx > 300:
                                     for i in range(0, 10):
                                         cx -= 20
                                         cy -= 3
                                         pygame.display.update()
-                                elif 500 < cx < 650:
+                                    whos.remove('cabbage')
+                            if bx > 500:
+                                if 500 < cx < 650:
                                     for i in range(0, 10):
                                         cx += 20
                                         cy -= 3
                                         pygame.display.update()
-                                print(whos)
-                        elif 'cabbage' in whos:
-                            whos.remove('cabbage')
-                            if 500 > cx > 300:
-                                for i in range(0, 10):
-                                    cx -= 20
-                                    cy -= 3
-                                    pygame.display.update()
-                            elif 500 < cx < 650:
-                                for i in range(0, 10):
-                                    cx += 20
-                                    cy -= 3
-                                    pygame.display.update()
+                                    whos.remove('cabbage')
                             print(whos)
 
                     elif circleX + 100 > mouse[0] > circleX and circleY + 100 > mouse[1] > circleY:

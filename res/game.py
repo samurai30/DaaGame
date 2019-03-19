@@ -3,22 +3,6 @@ import pygame
 entity = ['goat', 'wolf', 'cabbage']
 
 
-def eats(x, y):
-    if x == 'goat' and y == 'cabbage':
-        return True
-    elif x == 'wolf' and y == 'goat':
-        return True
-    else:
-        return False
-
-
-def safe_pair(x, y):
-    if eats(x, y) or eats(y, x):
-        return False
-    else:
-        return True
-
-
 def state_of(who, state):
     try:
         return state[who]
